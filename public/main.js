@@ -1,4 +1,4 @@
-let url = "http://localhost:4000/pdf"
+//let url = "http://localhost:4000/pdf"
 const fxHoja = document.getElementById("fxhoja")
 
 let pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -18,8 +18,8 @@ const datos_firma = {
 }
 
 function printpdf(vblob) {
-  const urlblob = URL.createObjectURL(vblob)
-  const url = `${urlblob}.pdf`
+  //const urlblob = URL.createObjectURL(vblob)
+  //const url = `${urlblob}.pdf`
 
   loadingtask.promise.then(function(pdf){
     pdf.getPage(1).then(function(page){
@@ -42,9 +42,9 @@ function printpdf(vblob) {
 }
 
 async function LoadPdf() {
-  const r = await fetch(url)//.then(response => response.atob())
-  const value = await r.blob()
-  printpdf(value)
+  //const r = await fetch(url)//.then(response => response.atob())
+  //const value = await r.blob()
+  //printpdf(value)
 }
 LoadPdf()
 
