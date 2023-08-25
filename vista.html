@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/public/jquery-3.6.0.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <link  href="https://dsp.reniec.gob.pe/refirma_invoker/resources/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    *{margin:0;padding:0;}
+    </style>
+  </head>
+  <body>
+    <h1>documento pdf</h1>
+    <div style="width:1140px;height:874.41px">
+      <div id="body_hoja" style="background: #57565a;">
+        <div id="fxcontent" style="width:556.92px;height: 779.41px; padding:1rem;">
+          <div id="fxhoja" >
+            <div id="fxfirm" style="width:155px;height:55px;position:absolute;background:rgba(245, 40, 101, 0.8);cursor:pointer;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button onclick="send_firm()">send</button>
+    <div id="addComponent"></div>
+    <script src="https://dsp.reniec.gob.pe/refirma_invoker/resources/js/clientclickonce.js"></script>
+    <script src="/public/main.js"></script>
+    <script src="/public/firm.js"></script>
+  </body>
+</html>
