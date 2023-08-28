@@ -79,7 +79,7 @@ window.addEventListener('getArguments',async()=>{
     pox:""+position.top / factor,
     poy:""+position.left / factor,
     stamp_appearance_id:"0",
-    reason:"soy yo",
+    reason:"soy el autor",
   }
   let args = await getArgsForEvent(payload)
   dispatchEventClient('sendArguments', args);

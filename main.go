@@ -62,7 +62,7 @@ func response(w http.ResponseWriter, r *http.Request) {
 
 	m.Row(16, func() {
 		m.Col(1, func() {
-			_ = m.FileImage("logo-unamad/logo-unamad.png", props.Rect{
+			_ = m.FileImage("public/logo-unamad.png", props.Rect{
 				Left:    0,
 				Top:     0,
 				Center:  true,
@@ -71,7 +71,7 @@ func response(w http.ResponseWriter, r *http.Request) {
 		})
 		m.ColSpace(10)
 		m.Col(1, func() {
-			_ = m.FileImage("logo-unamad/logo-unamad.png", props.Rect{
+			_ = m.FileImage("public/logo-unamad.png", props.Rect{
 				Left:    0,
 				Top:     0,
 				Center:  true,

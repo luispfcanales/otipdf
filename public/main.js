@@ -1,3 +1,4 @@
+//url
 //let url = "http://localhost:4000/pdf"
 const fxHoja = document.getElementById("fxhoja")
 
@@ -5,7 +6,8 @@ let pdfjsLib = window['pdfjs-dist/build/pdf'];
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-let loadingtask = pdfjsLib.getDocument("https://unamadpdf.onrender.com/pdf")
+//let loadingtask = pdfjsLib.getDocument("https://unamadpdf.onrender.com/pdf")
+let loadingtask = pdfjsLib.getDocument("http://localhost:4000/pdf")
 
 const factor = 2.5
 const datos_firma = {
@@ -17,7 +19,7 @@ const datos_firma = {
   apariencia:0
 }
 
-function printpdf(vblob) {
+function printpdf() {
   //const urlblob = URL.createObjectURL(vblob)
   //const url = `${urlblob}.pdf`
 
@@ -44,7 +46,7 @@ function printpdf(vblob) {
 async function LoadPdf() {
   //const r = await fetch(url)//.then(response => response.atob())
   //const value = await r.blob()
-  //printpdf(value)
+  printpdf()
 }
 LoadPdf()
 
