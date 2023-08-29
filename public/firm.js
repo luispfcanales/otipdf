@@ -84,7 +84,9 @@ window.addEventListener('getArguments',async()=>{
   let args = await getArgsForEvent(payload)
   dispatchEventClient('sendArguments', args);
 })
-window.addEventListener('invokerOk',()=>{})
+window.addEventListener('invokerOk',()=>{
+  console.log("todo ok ya firmo")
+})
 window.addEventListener('invokerCancel',(e)=>{
   alerta("El proceso de firma digital fue cancelado.", false);
 })

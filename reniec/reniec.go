@@ -67,6 +67,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	encodedData := base64.StdEncoding.EncodeToString(rs)
+	log.Println("se entrega el credenciales en base64")
 
 	json.NewEncoder(w).Encode(map[string]interface{}{
 		"args": encodedData,
@@ -74,7 +75,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 }
 
 func LoadFirm(w http.ResponseWriter, r *http.Request) {
-	log.Println("se ejecuta")
+	log.Println("se inicia proceso de subida de documento")
 	err := r.ParseMultipartForm(40 << 20)
 	if err != nil {
 		log.Println(err.Error())
@@ -90,6 +91,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 	defer f.Close()
 
 	//url.QueryUnescape
+	log.Println("archivo:", f)
 	fl, err := os.Create(h.Filename + ".pdf")
 	if err != nil {
 		log.Println(err.Error())
@@ -104,7 +106,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 		return
 	}
-	log.Println("write bytes are:", b)
+	log.Println("se subio el documento firmado->", b)
 
 	w.WriteHeader(200)
 	w.Write([]byte(""))
@@ -112,7 +114,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 }
 
 func DownloadFirm(w http.ResponseWriter, r *http.Request) {
-	log.Println("entro download")
+	log.Println("inicia proceso de descarga del documento")
 	fn := "38be5475-6b48-4dd9-83fd-77f51dfdb97e.pdf"
 	fs, err := os.Open("tmp/" + fn)
 	if err != nil {
@@ -125,6 +127,7 @@ func DownloadFirm(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/pdf")
 	w.Header().Add("Content-Type", "filename="+fn)
 
+	log.Println("termina proceso de descarga del documento")
 	io.Copy(w, fs)
 	w.WriteHeader(200)
 }
