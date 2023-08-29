@@ -28,6 +28,7 @@ func main() {
 	http.HandleFunc("/firm", vista)
 	http.HandleFunc("/file/upload", reniec.LoadFirm)
 	http.HandleFunc("/file/download", reniec.DownloadFirm)
+	http.HandleFunc("/reniec/download", reniec.DownloadReniec)
 
 	http.HandleFunc("/ext", info)
 

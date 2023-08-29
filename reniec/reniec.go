@@ -42,7 +42,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["idFile"] = "load_file"
 	args["type"] = "W"
 	args["protocol"] = "T"                                                      //https: S - http: T
-	args["fileDownloadUrl"] = "http://18.118.181.184/file/download"             //endpoint
+	args["fileDownloadUrl"] = "http://18.118.181.184/reniec/download"           //endpoint
 	args["fileDownloadLogoUrl"] = ""                                            //logo
 	args["fileDownloadStampUrl"] = "http://18.118.181.184/public/logofirma.png" //stamp reniec logo - optional
 	args["fileUploadUrl"] = "http://18.118.181.184/file/upload"                 //route to upload file and save
@@ -127,6 +127,27 @@ func DownloadFirm(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("Content-Type", "application/pdf")
 	w.Header().Add("Content-Type", "filename="+fn)
+
+	log.Println("termina proceso de descarga del documento")
+	io.Copy(w, fs)
+	w.WriteHeader(200)
+}
+
+func DownloadReniec(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("inicia proceso de descarga del documento")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	fn := "38be5475-6b48-4dd9-83fd-77f51dfdb97e.pdf"
+	fs, err := os.Open("tmp/" + fn)
+	if err != nil {
+		log.Println(err)
+		w.WriteHeader(500)
+		return
+	}
+	defer fs.Close()
+
+	w.Header().Add("Content-Type", "application/octet-stream")
+	w.Header().Add("Content-disposition", "attachment; filename="+fn)
 
 	log.Println("termina proceso de descarga del documento")
 	io.Copy(w, fs)
