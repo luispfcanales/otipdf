@@ -82,8 +82,11 @@ window.addEventListener('getArguments',async(e)=>{
     stamp_appearance_id:"0",
     reason:"soy el autor",
   }
+  console.log("capturando datos api")
   let args = await getArgsForEvent(payload)
+  console.log("datos capturados")
   dispatchEventClient('sendArguments', args);
+  console.log("se envio")
 })
 window.addEventListener('invokerOk',()=>{
   console.log("todo ok ya firmo")
