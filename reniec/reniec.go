@@ -49,8 +49,8 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["contentFile"] = opts.FileID + ".pdf"                                  //real name document - json struct
 	args["reason"] = opts.Reason                                                //json struct
 	args["pageNumber"] = opts.PageNumber                                        //json struct
-	args["posx"] = opts.Pox                                                     //json sctruct
-	args["posy"] = opts.Poy                                                     //json sctruct
+	args["posx"] = "100"                                                        //opts.Pox                                                     //json sctruct
+	args["posy"] = "50"                                                         //opts.Poy                                                     //json sctruct
 	args["isSignatureVisible"] = "true"
 	args["stampAppearanceId"] = opts.StampAppearanceID //json struct
 	args["fontSize"] = "7"
