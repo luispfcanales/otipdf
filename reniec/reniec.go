@@ -146,8 +146,8 @@ func DownloadReniec(w http.ResponseWriter, r *http.Request) {
 	}
 	defer fs.Close()
 
-	w.Header().Add("Content-Type", "application/octet-stream")
-	w.Header().Add("Content-disposition", "attachment; filename="+fn)
+	w.Header().Add("Content-Type", "application/pdf")
+	w.Header().Add("Content-Disposition", "attachment; filename="+fn)
 
 	log.Println("termina proceso de descarga del documento")
 	io.Copy(w, fs)
