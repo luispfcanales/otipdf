@@ -85,7 +85,8 @@ window.addEventListener('getArguments',async(e)=>{
   console.log("capturando datos api")
   let args = await getArgsForEvent(payload)
   console.log("datos capturados")
-  dispatchEventClient('sendArguments', args);
+  console.log(args)
+  //dispatchEventClient('sendArguments', args);
   console.log("se envio")
 })
 window.addEventListener('invokerOk',()=>{
