@@ -50,7 +50,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["reason"] = opts.Reason                                                //json struct
 	args["pageNumber"] = opts.PageNumber                                        //json struct
 	args["posx"] = opts.Pox                                                     //json sctruct
-	args["posx"] = opts.Poy                                                     //json sctruct
+	args["posy"] = opts.Poy                                                     //json sctruct
 	args["isSignatureVisible"] = "true"
 	args["stampAppearanceId"] = opts.StampAppearanceID //json struct
 	args["fontSize"] = "7"
