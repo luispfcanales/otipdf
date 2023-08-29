@@ -75,6 +75,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 }
 
 func LoadFirm(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	log.Println("se inicia proceso de subida de documento")
 	err := r.ParseMultipartForm(40 << 20)
 	if err != nil {
