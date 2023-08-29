@@ -35,6 +35,7 @@ func main() {
 	if port == "" {
 		port = "4000"
 	}
+	log.Println("run server in port: ", port)
 	http.ListenAndServe(":"+port, nil)
 }
 func vista(w http.ResponseWriter, r *http.Request) {
