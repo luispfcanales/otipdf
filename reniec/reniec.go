@@ -3,10 +3,12 @@ package reniec
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 type OptionsSignature struct {
@@ -49,8 +51,8 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["contentFile"] = opts.FileID + ".pdf"                                  //real name document - json struct
 	args["reason"] = opts.Reason                                                //json struct
 	args["pageNumber"] = opts.PageNumber                                        //json struct
-	args["posx"] = "100"                                                        //opts.Pox                                                     //json sctruct
-	args["posy"] = "50"                                                         //opts.Poy                                                     //json sctruct
+	args["posx"] = topoint(opts.Pox)                                            //json sctruct
+	args["posy"] = topoint(opts.Poy)                                            //json sctruct
 	args["isSignatureVisible"] = "true"
 	args["stampAppearanceId"] = opts.StampAppearanceID //json struct
 	args["fontSize"] = "7"
@@ -74,6 +76,15 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func topoint(pos string) string {
+	value, err := strconv.ParseFloat(pos, 64)
+	if err != nil {
+		return "0"
+	}
+	value = value / 0.352777778
+	return fmt.Sprintf("%v", value)
+}
+
 func LoadFirm(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	log.Println("se inicia proceso de subida de documento")
@@ -93,6 +104,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 
 	//url.QueryUnescape
 	log.Println("archivo:", f)
+	log.Println(h.Filename)
 	fl, err := os.Create(h.Filename + ".pdf")
 	if err != nil {
 		log.Println(err.Error())
