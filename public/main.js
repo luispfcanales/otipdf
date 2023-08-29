@@ -7,7 +7,7 @@ let pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
 //let loadingtask = pdfjsLib.getDocument("https://unamadpdf.onrender.com/pdf")
-let loadingtask = pdfjsLib.getDocument("http://localhost:4000/pdf")
+let loadingtask = pdfjsLib.getDocument("http://18.118.181.184/pdf")
 
 const factor = 2.5
 const datos_firma = {
