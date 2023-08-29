@@ -56,8 +56,8 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["fontSize"] = "7"
 	args["dcfilter"] = ".*FIR.*|.*FAU.*"
 	//args["signatureLevel"] = "0" //pcx why info set 0?
-	args["outputFile"] = "firmado.pdf" //json struct name file
-	args["maxFileSize"] = "41943040"   //40Mb
+	args["outputFile"] = "38be5475-6b48-4dd9-83fd-77f51dfdb97e[R].pdf" //json struct name file
+	args["maxFileSize"] = "41943040"                                   //40Mb
 	args["timestamp"] = "false"
 
 	rs, err := json.Marshal(args)

@@ -75,7 +75,7 @@ window.addEventListener('getArguments',async(e)=>{
   let position = $("#fxfirm").position()
   let payload = {
     file_id:"38be5475-6b48-4dd9-83fd-77f51dfdb97e",
-    page_number:"1",
+    page_number:"0",
     exacto:1,
     pox:""+position.top / factor,
     poy:""+position.left / factor,
