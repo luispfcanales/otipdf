@@ -80,7 +80,7 @@ window.addEventListener('getArguments',async(e)=>{
     pox:""+position.top / factor,
     poy:""+position.left / factor,
     stamp_appearance_id:"0",
-    reason:"soy el autor",
+    reason:"Soy el autor del documento",
   }
   console.log("capturando datos api")
   let args = await getArgsForEvent(payload)
