@@ -115,6 +115,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 
 func DownloadFirm(w http.ResponseWriter, r *http.Request) {
 	log.Println("inicia proceso de descarga del documento")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	fn := "38be5475-6b48-4dd9-83fd-77f51dfdb97e.pdf"
 	fs, err := os.Open("tmp/" + fn)
 	if err != nil {
