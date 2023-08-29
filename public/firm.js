@@ -70,7 +70,8 @@ const getArgsForEvent =async(payload)=>{
 }
 
 //events implement required
-window.addEventListener('getArguments',async()=>{
+window.addEventListener('getArguments',async(e)=>{
+  type = e.detail;
   let position = $("#fxfirm").position()
   let payload = {
     file_id:"38be5475-6b48-4dd9-83fd-77f51dfdb97e",
