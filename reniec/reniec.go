@@ -46,7 +46,7 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["fileDownloadLogoUrl"] = ""                                            //logo
 	args["fileDownloadStampUrl"] = "http://18.118.181.184/public/logofirma.png" //stamp reniec logo - optional
 	args["fileUploadUrl"] = "http://18.118.181.184/file/upload"                 //route to upload file and save
-	args["contentFile"] = opts.FileID                                           //real name document - json struct
+	args["contentFile"] = opts.FileID + ".pdf"                                  //real name document - json struct
 	args["reason"] = opts.Reason                                                //json struct
 	args["pageNumber"] = opts.PageNumber                                        //json struct
 	args["posx"] = opts.Pox                                                     //json sctruct
