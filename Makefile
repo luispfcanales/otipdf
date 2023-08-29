@@ -1,4 +1,4 @@
 build:
-	go build -o ./bin/main
+	go build main.go
 run: build
-	./bin/main
+	sudo PORT=80 ./main
