@@ -42,10 +42,10 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["idFile"] = "load_file"
 	args["type"] = "W"
 	args["protocol"] = "T"                                                        //https: S - http: T
-	args["fileDownloadUrl"] = "http://localhost:4000/file/download"               //endpoint
+	args["fileDownloadUrl"] = "http://18.118.181.184/file/download"               //endpoint
 	args["fileDownloadLogoUrl"] = ""                                              //logo
-	args["fileDownloadStampUrl"] = "http://localhost:4000/public/logo-unamad.png" //stamp reniec logo - optional
-	args["fileUploadUrl"] = "http://localhost:4000/file/upload"                   //route to upload file and save
+	args["fileDownloadStampUrl"] = "http://18.118.181.184/public/logo-unamad.png" //stamp reniec logo - optional
+	args["fileUploadUrl"] = "http://18.118.181.184/file/upload"                   //route to upload file and save
 	args["contentFile"] = opts.FileID                                             //real name document - json struct
 	args["reason"] = opts.Reason                                                  //json struct
 	args["pageNumber"] = opts.PageNumber                                          //json struct
