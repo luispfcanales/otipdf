@@ -56,7 +56,7 @@ function send_firm() {
 
 //getArgsForEvent send request to api to get info base64
 const getArgsForEvent =async(payload)=>{
-  const rq = await fetch("http://18.118.181.184/args",{
+  const rq = await fetch("http://localhost:4000/args",{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -77,17 +77,15 @@ window.addEventListener('getArguments',async(e)=>{
     file_id:"38be5475-6b48-4dd9-83fd-77f51dfdb97e",
     page_number:"0",
     exacto:1,
-    pox:""+position.top / factor,
-    poy:""+position.left / factor,
+    poy:position.top.toFixed(0),
+    pox:position.left.toFixed(0),
     stamp_appearance_id:"0",
     reason:"Soy el autor del documento",
   }
-  console.log("capturando datos api")
+  console.log(payload.pox," == ",payload.poy)
   let args = await getArgsForEvent(payload)
-  console.log("datos capturados")
   console.log(args)
   dispatchEventClient('sendArguments', args.args);
-  console.log("se envio")
 })
 window.addEventListener('invokerOk',()=>{
   console.log("todo ok ya firmo")

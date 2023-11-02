@@ -44,15 +44,17 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["idFile"] = "load_file"
 	args["type"] = "W"
 	args["protocol"] = "T"                                                      //https: S - http: T
-	args["fileDownloadUrl"] = "http://18.118.181.184/reniec/download"           //endpoint
+	args["fileDownloadUrl"] = "http://localhost:4000/reniec/download"           //endpoint
 	args["fileDownloadLogoUrl"] = ""                                            //logo
-	args["fileDownloadStampUrl"] = "http://18.118.181.184/public/logofirma.png" //stamp reniec logo - optional
-	args["fileUploadUrl"] = "http://18.118.181.184/file/upload"                 //route to upload file and save
+	args["fileDownloadStampUrl"] = "http://localhost:4000/public/logofirma.png" //stamp reniec logo - optional
+	args["fileUploadUrl"] = "http://localhost:4000/file/upload"                 //route to upload file and save
 	args["contentFile"] = opts.FileID + ".pdf"                                  //real name document - json struct
 	args["reason"] = opts.Reason                                                //json struct
 	args["pageNumber"] = opts.PageNumber                                        //json struct
-	args["posx"] = "100"                                                        //topoint(opts.Pox)                                            //json sctruct
-	args["posy"] = "50"                                                         //topoint(opts.Poy)                                            //json sctruct
+	//args["posx"] = "339.5"                                                      //json sctruct
+	//args["posy"] = "658.2"                                                      //json sctruct
+	args["posx"] = opts.Pox //json sctruct
+	args["posy"] = opts.Poy //json sctruct
 	args["isSignatureVisible"] = "true"
 	args["stampAppearanceId"] = opts.StampAppearanceID //json struct
 	args["fontSize"] = "7"
@@ -61,7 +63,8 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["outputFile"] = "38be5475-6b48-4dd9-83fd-77f51dfdb97e[R].pdf" //json struct name file
 	args["maxFileSize"] = "41943040"                                   //40Mb
 	args["timestamp"] = "false"
-
+	log.Println(topoint(opts.Pox))
+	log.Println(topoint(opts.Poy))
 	rs, err := json.Marshal(args)
 	if err != nil {
 		log.Println(err)
@@ -104,8 +107,8 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 
 	//url.QueryUnescape
 	log.Println("archivo:", f)
-	log.Println(h.Filename)
-	fl, err := os.Create(h.Filename + ".pdf")
+	log.Println(h.Filename) //[outputFile]
+	fl, err := os.Create("tmp/" + h.Filename)
 	if err != nil {
 		log.Println(err.Error())
 		w.WriteHeader(500)
