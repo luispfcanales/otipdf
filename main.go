@@ -40,6 +40,7 @@ func main() {
 	http.ListenAndServe(":"+port, nil)
 }
 func vista(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	t, err := template.ParseFiles("vista.html")
 	if err != nil {
 		log.Println(err)

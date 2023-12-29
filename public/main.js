@@ -2,12 +2,15 @@
 //let url = "http://localhost:4000/pdf"
 const fxHoja = document.getElementById("fxhoja")
 
-let pdfjsLib = window['pdfjs-dist/build/pdf'];
+let { pdfjsLib } = globalThis;
+//let pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.mjs';
+//pdfjsLib.GlobalWorkerOptions.workerSrc
+//https://mozilla.github.io/pdf.js/build/pdf.worker.mjs
 
 //let loadingtask = pdfjsLib.getDocument("https://unamadpdf.onrender.com/pdf")
-let loadingtask = pdfjsLib.getDocument("http://localhost:4000/pdf")
+let loadingtask = pdfjsLib.getDocument("http://10.10.11.21:4000/pdf")
 
 const factor = 2.5
 const datos_firma = {

@@ -2,14 +2,14 @@
 <html>
   <head>
     <script src="/public/jquery-3.6.0.min.js"></script>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.mjs" type="module"></script>
     <link  href="https://dsp.reniec.gob.pe/refirma_invoker/resources/css/bootstrap.min.css" rel="stylesheet">
     <style>
     *{margin:0;padding:0;}
     </style>
   </head>
   <body>
-    <h1>documento pdf</h1>
+    <h1>Conformidad de servicio</h1>
     <div style="width:1140px;height:874px">
       <div id="body_hoja" style="height:862px;background: #57565a;">
         <div id="fxcontent" style="width:595px;height: 842px; padding:1rem;">
@@ -24,7 +24,7 @@
     <input type="text" id="valueFirm">
     <div id="addComponent"></div>
     <script src="https://dsp.reniec.gob.pe/refirma_invoker/resources/js/clientclickonce.js"></script>
-    <script src="/public/main.js"></script>
+    <script src="/public/main.js" type="module"></script>
     <script src="/public/firm.js"></script>
   </body>
 </html>

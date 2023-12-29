@@ -22,6 +22,8 @@ type OptionsSignature struct {
 
 func GetArgs(w http.ResponseWriter, r *http.Request) {
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method != http.MethodPost {
 		return
@@ -43,14 +45,14 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["clientSecret"] = "B6jWcQmOjJkD94A-EgTl"
 	args["idFile"] = "load_file"
 	args["type"] = "W"
-	args["protocol"] = "T"                                                      //https: S - http: T
-	args["fileDownloadUrl"] = "http://localhost:4000/reniec/download"           //endpoint
-	args["fileDownloadLogoUrl"] = ""                                            //logo
-	args["fileDownloadStampUrl"] = "http://localhost:4000/public/logofirma.png" //stamp reniec logo - optional
-	args["fileUploadUrl"] = "http://localhost:4000/file/upload"                 //route to upload file and save
-	args["contentFile"] = opts.FileID + ".pdf"                                  //real name document - json struct
-	args["reason"] = opts.Reason                                                //json struct
-	args["pageNumber"] = opts.PageNumber                                        //json struct
+	args["protocol"] = "T"                                                          //https: S - http: T
+	args["fileDownloadUrl"] = "http://18.219.214.89:4000/reniec/download"           //endpoint
+	args["fileDownloadLogoUrl"] = ""                                                //logo
+	args["fileDownloadStampUrl"] = "http://18.219.214.89:4000/public/logofirma.png" //stamp reniec logo - optional
+	args["fileUploadUrl"] = "http://18.219.214.89:4000/file/upload"                 //route to upload file and save
+	args["contentFile"] = opts.FileID + ".pdf"                                      //real name document - json struct
+	args["reason"] = opts.Reason                                                    //json struct
+	args["pageNumber"] = opts.PageNumber                                            //json struct
 	//args["posx"] = "339.5"                                                      //json sctruct
 	//args["posy"] = "658.2"                                                      //json sctruct
 	args["posx"] = opts.Pox //json sctruct
@@ -60,8 +62,8 @@ func GetArgs(w http.ResponseWriter, r *http.Request) {
 	args["fontSize"] = "7"
 	args["dcfilter"] = ".*FIR.*|.*FAU.*"
 	//args["signatureLevel"] = "0" //pcx why info set 0?
-	args["outputFile"] = "38be5475-6b48-4dd9-83fd-77f51dfdb97e[R].pdf" //json struct name file
-	args["maxFileSize"] = "41943040"                                   //40Mb
+	args["outputFile"] = opts.FileID + "[R].pdf" //json struct name file
+	args["maxFileSize"] = "41943040"             //40Mb
 	args["timestamp"] = "false"
 	log.Println(topoint(opts.Pox))
 	log.Println(topoint(opts.Poy))
@@ -108,7 +110,7 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 	//url.QueryUnescape
 	log.Println("archivo:", f)
 	log.Println(h.Filename) //[outputFile]
-	fl, err := os.Create("tmp/" + h.Filename)
+	fl, err := os.Create("/mnt/s3/ServicesSheet/" + h.Filename)
 	if err != nil {
 		log.Println(err.Error())
 		w.WriteHeader(500)
@@ -132,8 +134,8 @@ func LoadFirm(w http.ResponseWriter, r *http.Request) {
 func DownloadFirm(w http.ResponseWriter, r *http.Request) {
 	log.Println("inicia proceso de descarga del documento")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	fn := "38be5475-6b48-4dd9-83fd-77f51dfdb97e.pdf"
-	fs, err := os.Open("tmp/" + fn)
+	fn := "testhoja.pdf"
+	fs, err := os.Open("/mnt/s3/ServicesSheet/" + fn)
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(500)
@@ -153,8 +155,8 @@ func DownloadReniec(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("inicia proceso de descarga del documento")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	fn := "38be5475-6b48-4dd9-83fd-77f51dfdb97e.pdf"
-	fs, err := os.Open("tmp/" + fn)
+	fn := "testhoja.pdf"
+	fs, err := os.Open("/mnt/s3/ServicesSheet/" + fn)
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(500)

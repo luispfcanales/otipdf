@@ -56,7 +56,7 @@ function send_firm() {
 
 //getArgsForEvent send request to api to get info base64
 const getArgsForEvent =async(payload)=>{
-  const rq = await fetch("http://localhost:4000/args",{
+  const rq = await fetch("http://10.10.11.21:4000/args",{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
